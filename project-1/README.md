@@ -55,33 +55,32 @@ RecipeFood(id, original_ingredient, aliased_ingredient, entity_id, recipe_id)
 ## Perguntas de Pesquisa/Análise
 
 #### Pergunta/Análise 1
-> * Pergunta 1
+> * Quais são as receitas mais nutritivas?
 >   
->   * Explicação sucinta da análise que será feita.
+>   * Utilizando dados de ingredientes presentes nas receitas, buscaremos determinar quais receitas são mais nutritivas e saudavéis.
 
 #### Pergunta/Análise 2
-> * Pergunta 2
+> * Qual receita é mais rica em X vitamina/nutriente?
 >   
->   * Explicação sucinta da análise que será feita.
+>   * Com cruzamento de dados e matemática simples, poderemos estimar a quantidade de determinada substância em receitas.
 
 #### Pergunta/Análise 3
-> * Pergunta 3
+> * Qual o ingrediente mais comum nas receitas?
 >   
->   * Explicação sucinta da análise que será feita.
+>   * Estimar quais são os ingredientes mais presentes dentre as receitas mais consumidas em uma determinada região.
 
+#### Pergunta/Análise 4
+> * Quão nutritivo é o ingrediente mais consumido em determinadas receitas?
+>
+>   * Utilizando do cruzamento de dados, estimar quão nutritivo é um ingrediente aplamente consumido.
 ### Perguntas/Análise Propostas mas Não Implementadas
 
 #### Pergunta/Análise 1
-> * Pergunta 1
+> * Quão nutritiva são as receitas de determinada região do globo?
 >   
->   * Explicação em linhas gerais de como a base pode ser usada para responder esta pergunta e a sua relevância.
+>   * Poderemos estudar receitas típicas de regiões para determinar quão nutritiva elas são.
 
 #### Pergunta/Análise 2
-> * Pergunta 2
+> * Quais as receitas com mais variedade nutritiva?
 >   
->   * Explicação em linhas gerais de como a base pode ser usada para responder esta pergunta e a sua relevância.
-
-#### Pergunta/Análise 3
-> * Pergunta 3
->   
->   * Explicação em linhas gerais de como a base pode ser usada para responder esta pergunta e a sua relevância.
+>   * Estudar as receitas que mais possui variedade de vitaminas e outras substâncias.
