@@ -1,7 +1,7 @@
 # Modelo para Apresentação do Projeto 1 - Modelo Conceitual e Lógico
 
 ## Slides da Apresentação
-> Coloque aqui o link para o PDF da apresentação
+https://docs.google.com/presentation/d/1VfEVw-f_js4v9XNrYgLxA_2kyP5PK5dlCNg7qiHoRRI/edit?usp=sharing
 
 ## Motivação e Contexto
 
