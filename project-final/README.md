@@ -14,7 +14,6 @@
 
 ## Modelo Conceitual
 
-> Coloque aqui a imagem do modelo conceitual final em ER ou UML, como o exemplo a seguir:
 > ![Recipe Analytics ER](assets/modeloRelacional1.png)
 > ![Recipe Analytics ER](assets/modeloRelacional2.png)
 
