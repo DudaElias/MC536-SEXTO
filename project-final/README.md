@@ -97,11 +97,19 @@ Depois de todas as etapas anteriores, os dados já estavam bem tratados para faz
 * transformação de dados para facilitar análise e pesquisa
 
 ## Evolução do Projeto
-> Relatório de evolução, descrevendo as evoluções na modelagem do projeto, dificuldades enfrentadas, mudanças de rumo, melhorias e lições aprendidas. Referências aos diagramas, modelos e recortes de mudanças são bem-vindos.
-> Podem ser apresentados destaques na evolução dos modelos conceitual e lógico. O modelo inicial e intermediários (quando relevantes) e explicação de refinamentos, mudanças ou evolução do projeto que fundamentaram as decisões.
-> Relatar o processo para se alcançar os resultados é tão importante quanto os resultados.
 
-No começo do projeto, tínhamos uma noção bem curta das bases que mexeríamos. Pensávamos que seria uma integração mais simple e mais direta através do nome de cada alimento. No entanto, assim que começamos a nos aprofundar nas bases e nos arquivos que as formavam, percebemos que haveria muitas inconsistências entre elas, como, por exemplo, a mesma comida escrita de formas diferentes e a presença e ausência de registros entre as bases. Tendo isso em mente, já começamos a buscar formas para integrarmos as duas bases de uma forma equilibrada. Foi aí que encontramos a biblioteca `fuzzywuzzy`, que, juntamente com a lib `pandas`, nos possibilitaram filtrar os registros pelos nomes do alimentos que pertenciam tanto a FooDB quanto a CulinaryDB. Dessa maneira, executamos um script (`./notebooks/Filter_SEXTO.ipynb`) e obtivemos, praticamente, todos os dados que seriam utilizados no nosso projeto.
+<h3>1. Começo </h3>
+
+No começo do projeto, tínhamos uma noção bem curta das bases que mexeríamos. Pensávamos que seria uma integração mais simple e mais direta através do nome de cada alimento.
+
+<h3>2. Dificuldades Encontradas </h3>
+
+No entanto, assim que começamos a nos aprofundar nas bases e nos arquivos que as formavam, percebemos que haveria muitas inconsistências entre elas, como, por exemplo, a mesma comida escrita de formas diferentes e a presença e ausência de registros entre as bases. Tendo isso em mente, já começamos a buscar formas para integrarmos as duas bases de uma forma equilibrada. Foi aí que encontramos a biblioteca `fuzzywuzzy`, que, juntamente com a lib `pandas`, nos possibilitaram filtrar os registros pelos nomes do alimentos que pertenciam tanto a FooDB quanto a CulinaryDB. Dessa maneira, executamos um script (`notebooks/Filter_SEXTO.ipynb`) e obtivemos, praticamente, todos os dados que seriam utilizados no nosso projeto.
+
+<h3>3. Evoluções na Modelagem e Mudanças de Rumo </h3>
+
+<h3>4. Melhorias e Lições Aprendidas </h3>
+
 
 ## Perguntas de Pesquisa/Análise Combinadas e Respectivas Análises
 
@@ -131,18 +139,19 @@ Considerando as limitações, o grau de dificuldade de cada modelo e o nosso ní
 
 #### Pergunta/Análise 1
 > Qual região tem a maior variedade nutritiva?
->   
->   * Explicação em linhas gerais de como a base pode ser usada para responder esta pergunta e a sua relevância.
-> 
+
+Tabela | Grafo
+----- | -----
+![Tabela Pergunta 1](assets/pergunta1_cypher_tabela.jpeg) | ![Grafo Pergunta 1](assets/pergunta1_cypher_grafo.jpeg)
 
 #### Pergunta/Análise 2
 > Quais os ingredientes mais comuns uma região?
->   
->   * Explicação em linhas gerais de como a base pode ser usada para responder esta pergunta e a sua relevância.
+
+![Tabela Pergunta 2](assets/pergunta2_cyper_tabela.jpeg)
 
 #### Pergunta/Análise 3
 > Quais são as combinações mais comuns de Componentes e Nutrientes?
->   
->   * Explicação em linhas gerais de como a base pode ser usada para responder esta pergunta e a sua relevância.
+
+![Tabela Pergunta 3](assets/pergunta3_cyper_tabela.jpeg)
 
 > Coloque um link para o arquivo do notebook que executa o conjunto de queries. Ele estará dentro da pasta `notebook`. Se por alguma razão o código não for executável no Jupyter, coloque na pasta `src`. Se as queries forem executadas atraves de uma interface de um SGBD não executável no Jupyter, como o Cypher, apresente na forma de markdown.
