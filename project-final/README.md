@@ -100,15 +100,19 @@ Depois de todas as etapas anteriores, os dados já estavam bem tratados para faz
 
 <h3>1. Começo </h3>
 
-No começo do projeto, tínhamos uma noção bem curta das bases que mexeríamos. Pensávamos que seria uma integração mais simple e mais direta através do nome de cada alimento.
+No começo do projeto, tínhamos uma noção bem curta das bases que mexeríamos. Pensávamos que seria uma integração mais simple e mais direta através do nome de cada alimento. Tínhamos montado um modelo ER mais complexo e mais estruturado, o mesmo que foi apresentado na primeira versão do projeto.
 
 <h3>2. Dificuldades Encontradas </h3>
 
-No entanto, assim que começamos a nos aprofundar nas bases e nos arquivos que as formavam, percebemos que haveria muitas inconsistências entre elas, como, por exemplo, a mesma comida escrita de formas diferentes e a presença e ausência de registros entre as bases. Tendo isso em mente, já começamos a buscar formas para integrarmos as duas bases de uma forma equilibrada. Foi aí que encontramos a biblioteca `fuzzywuzzy`, que, juntamente com a lib `pandas`, nos possibilitaram filtrar os registros pelos nomes do alimentos que pertenciam tanto a FooDB quanto a CulinaryDB. Dessa maneira, executamos um script (`notebooks/Filter_SEXTO.ipynb`) e obtivemos, praticamente, todos os dados que seriam utilizados no nosso projeto.
+Assim que começamos a nos aprofundar nas bases e nos arquivos que as formavam, percebemos que haviam muitas inconsistências entre elas, como, por exemplo, a mesma comida escrita de formas diferentes (`Egg` e `Eggs`) e a presença e ausência de registros entre as bases. Tendo isso em mente, já começamos a buscar formas para integrarmos as duas bases de uma maneira prática e rápida. Foi aí que encontramos a biblioteca `fuzzywuzzy`, que, juntamente com a lib `pandas`, nos possibilitaram filtrar os registros que pertenciam tanto a FooDB quanto a CulinaryDB. Dessa maneira, executamos o script presente em `notebooks/Filter_SEXTO.ipynb` para todos os arquivos de dados - alguns mais de uma vez - e obtivemos, praticamente, todos os dados que seriam utilizados no nosso projeto. Além disso, ao realizar as análises para as perguntas, encontramos muitas dificuldades com as ferramentas que estávamos utilizando, seja para fazer o setup inicial de cada software (`Binder/Jupyter` e `Neo4j`), ou para construir as queries, muito devido à falta de experiência que tínhamos no uso das ferramentas
 
 <h3>3. Evoluções na Modelagem e Mudanças de Rumo </h3>
 
+Com os dados devidamente tratados, vimos que algumas tabelas não faziam mais sentido nos nossos modelos, visto que elas não tinham nenhuma relação com as demais. Portanto, as removemos tanto do modelo conceitual, quanto do modelo lógico relacional.
+
 <h3>4. Melhorias e Lições Aprendidas </h3>
+
+Para finalizar, durante o período de análises, aprendemos o quão complexas e impraticáveis algumas consultas podem ser, seja em Cypher ou em SQL, dado o grande volume de informações. Por mais otimizadas que elas possam ser, os nossos ambientes (máquinas) não foram capazes de executar todas as perguntas propostas. Assim, tivemos que adaptar as nossas análises para casos que pudessem ser respondidos.
 
 
 ## Perguntas de Pesquisa/Análise Combinadas e Respectivas Análises
@@ -119,21 +123,18 @@ Considerando as limitações, o grau de dificuldade de cada modelo e o nosso ní
 
 #### Pergunta/Análise 1
 > Quais são os 5 alimentos mais ricos em um determinado nutriente?
->   nt
->   * Explicação sucinta da análise que será feita e conjunto de queries que
->     responde à pergunta.
+
+![Tabela Pergunta 1](assets/pergunta1_SQL.png)
 
 #### Pergunta/Análise 2
 > Qual é a receita mais complexa (ou seja, a que tem mais ingredientes)?
->   
->   * Explicação sucinta da análise que será feita e conjunto de queries que
->     responde à pergunta.
+ 
+![Tabela Pergunta 2](assets/pergunta2_SQL.png)
 
 #### Pergunta/Análise 3
 > Quais são os 5 compostos mais comuns encontrados nos alimentos?
->   
->   * Explicação sucinta da análise que será feita e conjunto de queries que
->     responde à pergunta.
+
+![Tabela Pergunta 2](assets/pergunta3_SQL.png)
 
 ### Perguntas/Análise para o Modelo em Grafo (Cypher)
 
