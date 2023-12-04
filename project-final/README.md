@@ -147,11 +147,11 @@ Tabela | Grafo
 #### Pergunta/Análise 2
 > Quais os ingredientes mais comuns uma região?
 
-![Tabela Pergunta 2](assets/pergunta2_cyper_tabela.jpeg)
+![Tabela Pergunta 2](assets/pergunta2_cypher_tabela.jpeg)
 
 #### Pergunta/Análise 3
 > Quais são as combinações mais comuns de Componentes e Nutrientes?
 
-![Tabela Pergunta 3](assets/pergunta3_cyper_tabela.jpeg)
+![Tabela Pergunta 3](assets/pergunta3_cypher_tabela.jpeg)
 
 > Coloque um link para o arquivo do notebook que executa o conjunto de queries. Ele estará dentro da pasta `notebook`. Se por alguma razão o código não for executável no Jupyter, coloque na pasta `src`. Se as queries forem executadas atraves de uma interface de um SGBD não executável no Jupyter, como o Cypher, apresente na forma de markdown.
