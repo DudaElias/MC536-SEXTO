@@ -1,4 +1,4 @@
-Aliased Ingredient Name,Ingredient Synonyms,Entity ID,Category
+AliasedIngredientName,IngredientSynonyms,EntityID,Category
 Rye Bread,bread-rye,3,Bakery
 Wheaten Bread,bread-wheaten,4,Bakery
 White Bread,bread-white; baguette,5,Bakery
