@@ -42,7 +42,6 @@ RecipeFood(id, original_ingredient, aliased_ingredient, entity_id, recipe_id)
 ~~~
 
 ## Dataset Publicado
-> Se ao tratar e integrar os dados originais foram produzidas novas bases relacionais ou de grafos, elencar essas bases.
 
 título do arquivo/base | link | breve descrição
 ----- | ----- | -----
@@ -168,8 +167,6 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SE
 CREATE (:Ingredients {culinarydb_ingredient_id: line.culinarydb_ingredient_id, foodb_id: line.foodb_id , name_ingredient: line.name});
 
 
-
-
 LOAD CSV WITH HEADERS FROM ' https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_culinarydb_recipe_details.csv' AS line
 CREATE (:Recipe {recipe_code: line.recipe_id, recipe_name: line.Title});
 
@@ -189,18 +186,12 @@ create index for (c:Compounds) on c.compound_code;
 create index for (n:Nutrients) on n.nutrient_code;
 create index for (r:RegionalCuisine) on r.region_name;
 
-
-
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_culinarydb_recipe_ingredients.csv" AS line
 MATCH (r:Recipe {recipe_code: line.recipe_id})
 MATCH (i:Ingredients {culinarydb_ingredient_id: line.culinarydb_ingredient_id})
 MERGE  (r)-[h:HasIngredients]->(i)
 ON CREATE SET h.weight=1
 ON MATCH SET h.weight=h.weight+1;
-
-
-
-
 
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_foodb_content_nutrient.csv" AS line
 MATCH (n:Nutrients {nutrient_code: line.source_id})
@@ -209,16 +200,12 @@ MERGE   (i)-[h:HasNutrients]->(n)
 ON CREATE SET h.weight=1
 ON MATCH SET h.weight=h.weight+1;
 
-
-
-
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_foodb_content_compound.csv' AS line
 MATCH (c:Compounds {compound_code: line.source_id})
 MATCH (i:Ingredients {foodb_id: line.food_id})
 MERGE  (i)-[h:HasCompound]->(c)
 ON CREATE SET h.weight=1
 ON MATCH SET h.weight=h.weight+1;
-
 
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_culinarydb_recipe_details.csv' AS line
 MATCH (c:RegionalCuisine {region_name: line.Cuisine})
