@@ -45,16 +45,16 @@ RecipeFood(id, original_ingredient, aliased_ingredient, entity_id, recipe_id)
 
 título do arquivo/base | link | breve descrição
 ----- | ----- | -----
-`CulinaryDBCuisines` | `project-final\data\processed\culinarydb_cuisines.csv` | `<breve descrição do arquivo/base>`
-`filtered_culinarydb_recipe_details` | `project-final\data\processed\filtered_culinarydb_recipe_details.csv` | `<breve descrição do arquivo/base>`
-`filtered_culinarydb_recipe_ingredients` | `project-final\data\processed\filtered_culinarydb_recipe_ingredients.csv` | `<breve descrição do arquivo/base>`
-`filtered_foodb_compound` | `project-final\data\processed\filtered_foodb_compound.csv` | `<breve descrição do arquivo/base>`
-`filtered_foodb_content_compound` | `project-final\data\processed\filtered_foodb_content_compound.csv` | `<breve descrição do arquivo/base>`
-`filtered_foodb_content_nutrient` | `project-final\data\processed\filtered_foodb_content_nutrient.csv` | `<breve descrição do arquivo/base>`
-`filtered_foodb_nutrient` | `project-final\data\processed\filtered_foodb_nutrient.csv` | `<breve descrição do arquivo/base>`
-`sexto_content_compound` | `project-final\data\processed\sexto_content_compound.csv` | `<breve descrição do arquivo/base>`
-`sexto_content_nutrient` | `project-final\data\processed\sexto_content_nutrient.csv` | `<breve descrição do arquivo/base>`
-`sexto_ingredient` | `project-final\data\processed\sexto_ingredient.csv` | `<breve descrição do arquivo/base>`
+`CulinaryDBCuisines` | `project-final\data\processed\culinarydb_cuisines.csv` | `Este arquivo contém informações sobre as várias cozinhas (regiões) presentes na base de dados culinária.`
+`filtered_culinarydb_recipe_details` | `project-final\data\processed\filtered_culinarydb_recipe_details.csv` | `Este arquivo contém detalhes filtrados das receitas do banco de dados culinário. As receitas que não estão associadas aos ingredientes correspondentes foram removidas.`
+`filtered_culinarydb_recipe_ingredients` | `project-final\data\processed\filtered_culinarydb_recipe_ingredients.csv` | `Este arquivo contém informações filtradas sobre a relação entre as receitas e os ingredientes do banco de dados culinário. Os ingredientes que não foram mapeados para os alimentos do banco de dados de alimentos foram removidos.`
+`filtered_foodb_compound` | `project-final\data\processed\filtered_foodb_compound.csv` | `Este arquivo contém informações filtradas sobre os compostos do banco de dados de alimentos. Os compostos que não estão associados aos alimentos correspondentes foram removidos.`
+`filtered_foodb_content_compound` | `project-final\data\processed\filtered_foodb_content_compound.csv` | `Este arquivo contém informações filtradas sobre o conteúdo de compostos dos alimentos do banco de dados de alimentos. Os compostos que não existem no conjunto de dados de compostos filtrados foram removidos.`
+`filtered_foodb_content_nutrient` | `project-final\data\processed\filtered_foodb_content_nutrient.csv` | `Este arquivo contém informações filtradas sobre o conteúdo de nutrientes dos alimentos do banco de dados de alimentos. Os nutrientes que não existem no conjunto de dados de nutrientes filtrados foram removidos.`
+`filtered_foodb_nutrient` | `project-final\data\processed\filtered_foodb_nutrient.csv` | `Este arquivo contém informações filtradas sobre os nutrientes do banco de dados de alimentos. Os nutrientes que não estão associados aos alimentos correspondentes foram removidos.`
+`sexto_content_compound` | `project-final\data\processed\sexto_content_compound.csv` | `Este arquivo é provavelmente um resultado do processamento adicional dos dados de conteúdo de compostos filtrados, possivelmente incluindo a adição de informações adicionais ou a transformação dos dados existentes.`
+`sexto_content_nutrient` | `project-final\data\processed\sexto_content_nutrient.csv` | `Este arquivo é provavelmente um resultado do processamento adicional dos dados de conteúdo de nutrientes filtrados, possivelmente incluindo a adição de informações adicionais ou a transformação dos dados existentes.`
+`sexto_ingredient` | `project-final\data\processed\sexto_ingredient.csv` | `Este arquivo contém informações sobre os ingredientes que foram mapeados entre o banco de dados culinário e o banco de dados de alimentos. Ele inclui informações adicionais dos dois bancos de dados, como o nome científico do alimento, o grupo de alimentos, o subgrupo de alimentos, o tipo de alimento, etc.`
 
 ## Bases de Dados
 
