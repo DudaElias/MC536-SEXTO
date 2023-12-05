@@ -7,10 +7,10 @@
 ## Slides
 
 ### Apresentação Prévia
-> (assets/Apresentação%20SEXTO%20-%20project1.pdf)
+[Recipe Analytics Prévia](assets/Apresentação%20SEXTO%20-%20project1.pdf)
 
 ### Apresentação Final
-> (assets/MC536%20-%20Sexteto%20Sinistro.pdf)
+[Recipe Analytics Final](assets/MC536%20-%20Sexteto%20Sinistro.pdf)
 
 ## Modelo Conceitual
 
@@ -142,7 +142,7 @@ Considerando as limitações, o grau de dificuldade de cada modelo e o nosso ní
 
 ![Tabela Pergunta 3](assets/pergunta3_SQL.png)
 
-![Queries](notebooks/Queries.ipynb)
+[Queries](notebooks/Queries.ipynb)
 
 ### Perguntas/Análise para o Modelo em Grafo (Cypher)
 
