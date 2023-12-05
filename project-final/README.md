@@ -31,6 +31,7 @@ ContentNutrient(id, source_id, food_id, orig_source_id, orig_content, orig_unit,
 Compound(id, public_id, name, state, description)
 
 Nutrient(id, public_id, name)
+
 Food(id, name, name_scientific, description, wikipedia_id, food_group, food_subgroup, food_type, entity_id, food_id)
 
 Recipe(id, title, cuisine)
