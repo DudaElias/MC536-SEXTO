@@ -7,10 +7,10 @@
 ## Slides
 
 ### Apresentação Prévia
-> https://docs.google.com/presentation/d/1VfEVw-f_js4v9XNrYgLxA_2kyP5PK5dlCNg7qiHoRRI/edit?usp=sharing
+> (assets/Apresentação%20SEXTO%20-%20project1.pdf)
 
 ### Apresentação Final
-> https://docs.google.com/presentation/d/1ZImI_HQ-A4fX2wtrOf8TGoKOZlUKDVlN7sbBH0ZUkdU/edit?usp=sharing
+> (assets/MC536%20-%20Sexteto%20Sinistro.pdf)
 
 ## Modelo Conceitual
 
@@ -46,11 +46,16 @@ RecipeFood(id, original_ingredient, aliased_ingredient, entity_id, recipe_id)
 
 título do arquivo/base | link | breve descrição
 ----- | ----- | -----
-`<título do arquivo/base>` | `<link para arquivo/base>` | `<breve descrição do arquivo/base>`
-
-> Os arquivos finais do dataset publicado devem ser colocados na pasta `data`, em subpasta `processed`. Outros arquivos serão colocados em subpastas conforme seu papel (externo, interim, raw). A diferença entre externo e raw é que o raw é em formato não adaptado para uso. A pasta `raw` é opcional, pois pode ser substituída pelo link para a base original da seção anterior.
-> Coloque arquivos que não estejam disponíveis online e sejam acessados pelo notebook. Relacionais (usualmente CSV), XML, JSON e CSV ou triplas para grafos.
-> Este é o conjunto mínimo de informações que deve constar na disponibilização do Dataset, mas a equipe pode enriquecer esta seção.
+`CulinaryDBCuisines` | `project-final\data\processed\culinarydb_cuisines.csv` | `<breve descrição do arquivo/base>`
+`filtered_culinarydb_recipe_details` | `project-final\data\processed\filtered_culinarydb_recipe_details.csv` | `<breve descrição do arquivo/base>`
+`filtered_culinarydb_recipe_ingredients` | `project-final\data\processed\filtered_culinarydb_recipe_ingredients.csv` | `<breve descrição do arquivo/base>`
+`filtered_foodb_compound` | `project-final\data\processed\filtered_foodb_compound.csv` | `<breve descrição do arquivo/base>`
+`filtered_foodb_content_compound` | `project-final\data\processed\filtered_foodb_content_compound.csv` | `<breve descrição do arquivo/base>`
+`filtered_foodb_content_nutrient` | `project-final\data\processed\filtered_foodb_content_nutrient.csv` | `<breve descrição do arquivo/base>`
+`filtered_foodb_nutrient` | `project-final\data\processed\filtered_foodb_nutrient.csv` | `<breve descrição do arquivo/base>`
+`sexto_content_compound` | `project-final\data\processed\sexto_content_compound.csv` | `<breve descrição do arquivo/base>`
+`sexto_content_nutrient` | `project-final\data\processed\sexto_content_nutrient.csv` | `<breve descrição do arquivo/base>`
+`sexto_ingredient` | `project-final\data\processed\sexto_ingredient.csv` | `<breve descrição do arquivo/base>`
 
 ## Bases de Dados
 
@@ -135,7 +140,9 @@ Considerando as limitações, o grau de dificuldade de cada modelo e o nosso ní
 #### Pergunta/Análise 3
 > Quais são os 5 compostos mais comuns encontrados nos alimentos?
 
-![Tabela Pergunta 2](assets/pergunta3_SQL.png)
+![Tabela Pergunta 3](assets/pergunta3_SQL.png)
+
+![Queries](notebooks/Queries.ipynb)
 
 ### Perguntas/Análise para o Modelo em Grafo (Cypher)
 
@@ -156,4 +163,103 @@ Tabela | Grafo
 
 ![Tabela Pergunta 3](assets/pergunta3_cypher_tabela.jpeg)
 
-> Coloque um link para o arquivo do notebook que executa o conjunto de queries. Ele estará dentro da pasta `notebook`. Se por alguma razão o código não for executável no Jupyter, coloque na pasta `src`. Se as queries forem executadas atraves de uma interface de um SGBD não executável no Jupyter, como o Cypher, apresente na forma de markdown.
+~~~cypher
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/sexto_ingredient.csv' AS line
+CREATE (:Ingredients {culinarydb_ingredient_id: line.culinarydb_ingredient_id, foodb_id: line.foodb_id , name_ingredient: line.name});
+
+
+
+
+LOAD CSV WITH HEADERS FROM ' https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_culinarydb_recipe_details.csv' AS line
+CREATE (:Recipe {recipe_code: line.recipe_id, recipe_name: line.Title});
+
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_foodb_compound.csv' AS line
+CREATE (:Compounds {compound_code: line.id, compound_name: line.name});
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_foodb_nutrient.csv' AS line
+CREATE (:Nutrients {nutrient_code: line.id, nutrient_name: line.name});
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/culinarydb_cuisines.csv' AS line
+CREATE (:RegionalCuisine {region_name: line.Cuisine});
+
+create index for (r:Recipe) on r.recipe_code;
+create index for (i:Ingredients) on i.ingredient_code;
+create index for (c:Compounds) on c.compound_code;
+create index for (n:Nutrients) on n.nutrient_code;
+create index for (r:RegionalCuisine) on r.region_name;
+
+
+
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_culinarydb_recipe_ingredients.csv" AS line
+MATCH (r:Recipe {recipe_code: line.recipe_id})
+MATCH (i:Ingredients {culinarydb_ingredient_id: line.culinarydb_ingredient_id})
+MERGE  (r)-[h:HasIngredients]->(i)
+ON CREATE SET h.weight=1
+ON MATCH SET h.weight=h.weight+1;
+
+
+
+
+
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_foodb_content_nutrient.csv" AS line
+MATCH (n:Nutrients {nutrient_code: line.source_id})
+MATCH (i:Ingredients {foodb_id: line.food_id})
+MERGE   (i)-[h:HasNutrients]->(n)
+ON CREATE SET h.weight=1
+ON MATCH SET h.weight=h.weight+1;
+
+
+
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_foodb_content_compound.csv' AS line
+MATCH (c:Compounds {compound_code: line.source_id})
+MATCH (i:Ingredients {foodb_id: line.food_id})
+MERGE  (i)-[h:HasCompound]->(c)
+ON CREATE SET h.weight=1
+ON MATCH SET h.weight=h.weight+1;
+
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/DudaElias/MC536-SEXTO/main/project-final/data/processed/filtered_culinarydb_recipe_details.csv' AS line
+MATCH (c:RegionalCuisine {region_name: line.Cuisine})
+MATCH (r:Recipe {recipe_code: line.recipe_id})
+CREATE (r)-[:BelongsTo]->(c);
+
+MATCH (
+    c:RegionalCuisine)-[:BelongsTo]-
+    (r:Recipe)-[:HasIngredients]-
+    (i:Ingredients)-[:HasNutrients]-
+    (n:Nutrients)
+RETURN c.region_name AS cuisine, count(n) AS nutrientCount
+ORDER BY nutrientCount DESC
+
+MATCH (
+    c:RegionalCuisine {region_name: 'China'})-[b:BelongsTo]-
+    (r:Recipe)-[j:HasIngredients]-
+    (i:Ingredients)-[h:HasNutrients]-
+    (n:Nutrients)
+RETURN n, h, i, b, r, c, j
+LIMIT 200
+
+MATCH (
+    c:RegionalCuisine {region_name: 'USA'})-[:BelongsTo]-
+    (r:Recipe)-[:HasIngredients]-
+    (i:Ingredients)
+RETURN i.name_ingredient AS ingredient, COUNT(i) AS frequency
+ORDER BY frequency DESC
+LIMIT 10;
+
+MATCH (
+    c:RegionalCuisine {region_name: 'China'})-[:BelongsTo]-
+    (r:Recipe)-[:HasIngredients]-
+    (i:Ingredients)
+RETURN i.name_ingredient AS ingredient, COUNT(i) AS frequency
+ORDER BY frequency DESC
+LIMIT 10;
+
+MATCH (i:Ingredients)-[:HasNutrients]->(n:Nutrients)
+MATCH (i)-[:HasCompound]->(c:Compounds)
+RETURN n.nutrient_name AS nutrient, c.compound_name AS compound, COUNT(i) AS frequency
+ORDER BY frequency DESC
+LIMIT 10;
+~~~
